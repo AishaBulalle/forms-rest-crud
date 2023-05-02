@@ -1,0 +1,72 @@
+{
+  "posts": {
+    "00": {
+      "title": "Abe",
+      "image": "https://media.avisen.dk//image/15711567/57/img.jpg"
+    },
+    "01": {
+      "title": "Kat",
+      "image": "https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=1200&quality=85&auto=format&fit=max&s=a52bbe202f57ac0f5ff7f47166906403"
+    },
+    "02": {
+      "title": "Hund",
+      "image": "https://image.petmd.com/files/styles/863x625/public/CANS_dogsmiling_379727605.jpg"
+    },
+    "03": {
+      "title": "Mus",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Apodemus_sylvaticus_bosmuis.jpg/1200px-Apodemus_sylvaticus_bosmuis.jpg"
+    },
+    "04": {
+      "title": "Hest",
+      "image": "https://urtefarm.dk/wp-content/uploads/2020/11/sarah-olive-TGl7QuHRIDM-unsplash-scaled.jpg"
+    },
+    "05": {
+      "title": "Skildpadde",
+      "image": "https://asset.dr.dk/imagescaler/?protocol=https&server=www.dr.dk&file=%2Fimages%2Fcrop%2F2020%2F09%2F18%2F1600430957_mark_fitzpatrick.jpg&scaleAfter=crop&quality=70&w=720&h=519"
+    },
+    "06": {
+      "title": "Tiger",
+      "image": "https://knuthenborg.dk/wp-content/uploads/2021/05/hi-igtv-keni-thumb-e1620816735137.png"
+    },
+    "07": {
+      "title": "Giraf",
+      "image": "https://videnskab.dk/wp-content/uploads/2016/05/giraf-1-0.jpg"
+    },
+    "08": {
+      "title": "Slange",
+      "image": "https://dec5d6x1eivq1.cloudfront.net/uploads/2022/03/l-szzxp9ktfbbqxujzuddf7wkmq-1024x641.jpg"
+    },
+    "09": {
+      "title": "Ko",
+      "image": "https://www.worldanimalprotection.dk/sites/default/files/styles/webp/public/media/cow-1715829_1920.jpg"
+    },
+    "10": {
+      "title": "ged",
+      "image": "https://media.lex.dk/media/29797/standard_compressed_geder.JPG"
+    },
+    "11": {
+      "title": "Løve",
+      "image": "https://www.africatours.dk/public/galleri/stor/18618.jpg"
+    },
+    "12": {
+      "title": "Sommerfugl",
+      "image": "https://www.dn.dk/media/61378/admiral-overside_foto-michael-stoltze.jpg"
+    },
+    "13": {
+      "title": "Tissemyre",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Meat_eater_ant_feeding_on_honey02.jpg/300px-Meat_eater_ant_feeding_on_honey02.jpg"
+    },
+    "14": {
+      "title": "Panda",
+      "image": "https://pandaclub.dk/wp-content/uploads/sites/3/2020/05/p-1.png"
+    },
+    "15": {
+      "title": "Edderkop",
+      "image": "https://www.dask.nu/wp-content/uploads/2020/04/edderkop.jpg"
+    },
+    "16": {
+      "title": "Æsel",
+      "image": "https://kristinahobbs.files.wordpress.com/2016/04/laughing_donkey.jpg?w=640"
+    }
+  }
+}
