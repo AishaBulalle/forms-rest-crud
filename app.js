@@ -1,7 +1,7 @@
 "use strict";
 
 // ============== global variables ============== //
-const endpoint = "https://forms-rest-crud-c1ca6-default-rtdb.firebaseio.com/";
+const endpoint = "https://projectzoo-b1aef-default-rtdb.firebaseio.com/";
 let posts;
 
 // ============== load and init app ============== //
@@ -10,7 +10,7 @@ window.addEventListener("load", initApp);
 
 function initApp() {
   updatePostsGrid(); // update the grid of posts: get and show all posts
-  updateUserGrid();
+  //updateUserGrid();
   // event listener
   document
     .querySelector("#btn-create-post")
@@ -18,6 +18,24 @@ function initApp() {
   document
     .querySelector("#form-create-post")
     .addEventListener("submit", createPostClicked);
+  document
+    .querySelector("#form-update-post")
+    .addEventListener("submit", updatePostClicked);
+  document
+    .querySelector("#form-delete-post")
+    .addEventListener("submit", deletePostClicked);
+  document
+    .querySelector("#form-delete-post .btn-cancel")
+    .addEventListener("click", deleteCancelClicked);
+  document
+    .querySelector("#select-sort-by")
+    .addEventListener("change", sortByChanged);
+  document
+    .querySelector("#input-search")
+    .addEventListener("keyup", inputSearchChanged);
+  document
+    .querySelector("#input-search")
+    .addEventListener("search", inputSearchChanged);
 }
 
 // ============== events ============== //
@@ -37,25 +55,46 @@ function createPostClicked(event) {
   const image = form.image.value;
 
   createPost(title, body, image);
-
-  updatePostsGrid();
+  form.reset(); // reset the form (clears inputs)
 }
 
-async function createPost(title, body, image) {
-  const newPost = {
-    title: title,
-    body: body,
-    image: image,
-  };
-  console.log(newPost);
-  const json = JSON.stringify(newPost);
-
-  const response = await fetch(`${endpoint}/posts.json`, {
-    method: "POST",
-    body: json,
-  });
+function updatePostClicked(event) {
+  const form = event.target; // or "this"
+  // extract the values from inputs in the form
+  const title = form.title.value;
+  const body = form.body.value;
+  const image = form.image.value;
+  // get id of the post to update - saved in data-id
+  const id = form.getAttribute("data-id");
+  updatePost(id, title, body, image); // call updatePost with arguments
 }
 
+function deletePostClicked(event) {
+  const id = event.target.getAttribute("data-id"); // event.target is the delete form
+  deletePost(id); // call deletePost with id
+}
+
+function deleteCancelClicked() {
+  document.querySelector("#dialog-delete-post").close(); // close dialog
+}
+
+function sortByChanged(event) {
+  const selectedValue = event.target.value;
+
+  if (selectedValue === "title") {
+    posts.sort(compareTitle);
+  } else if (selectedValue === "body") {
+    posts.sort(compareBody);
+  }
+
+  showPosts(posts);
+}
+
+function inputSearchChanged(event) {
+  const value = event.target.value;
+  const postsToShow = searchPosts(value);
+  showPosts(postsToShow);
+}
 // todo
 
 // ============== posts ============== //
@@ -106,29 +145,54 @@ function showPost(postObject) {
   // called when delete button is clicked
   function deleteClicked() {
     console.log("Update button clicked");
-    deletePost(postObject.id);
-    // to do
+
+    document.querySelector("#dialog-delete-post-title").textContent =
+      postObject.title;
+    // set data-id attribute of post you want to delete (... to use when delete)
+    document
+      .querySelector("#form-delete-post")
+      .setAttribute("data-id", postObject.id);
+    // show delete dialog
+    document.querySelector("#dialog-delete-post").showModal();
   }
 
   // called when update button is clicked
   function updateClicked() {
-    console.log("Delete button clicked");
-
-    const title = `${postObject.title} Updateret`;
-    const image = `${postObject.images} Updateret`;
-
-    updatePost(postObject.id, title, image);
-    // to do
+    const updateForm = document.querySelector("#form-update-post"); // reference to update form in dialog
+    updateForm.title.value = postObject.title; // set title input in update form from post title
+    updateForm.body.value = postObject.body; // set body input in update form post body
+    updateForm.image.value = postObject.image; // set image input in update form post image
+    updateForm.setAttribute("data-id", postObject.id); // set data-id attribute of post you want to update (... to use when update)
+    document.querySelector("#dialog-update-post").showModal(); // show update modal
   }
 }
 
-// Create a new post - HTTP Method: POST
+function searchPosts(searchValue) {
+  searchValue = searchValue.toLowerCase();
+
+  const results = posts.filter(checkTitle);
+
+  function checkTitle(post) {
+    const title = post.title.toLowerCase();
+    return title.includes(searchValue);
+  }
+
+  return results;
+}
+
 async function createPost(title, body, image) {
-  // create new post object
-  // convert the JS object to JSON string
+  const newPost = { title, body, image }; // create new post object
+  const json = JSON.stringify(newPost); // convert the JS object to JSON string
   // POST fetch request with JSON in the body
+  const response = await fetch(`${endpoint}/posts.json`, {
+    method: "POST",
+    body: json,
+  });
   // check if response is ok - if the response is successful
-  // update the post grid to display all posts and the new post
+  if (response.ok) {
+    console.log("New post succesfully added to Firebase 🔥");
+    updatePostsGrid(); // update the post grid to display all posts and the new post
+  }
 }
 
 // Update an existing post - HTTP Method: DELETE
@@ -136,8 +200,10 @@ async function deletePost(id) {
   const response = await fetch(`${endpoint}/posts/${id}.json`, {
     method: "DELETE",
   });
-
-  updatePostsGrid();
+  if (response.ok) {
+    console.log("New post succesfully deleted from Firebase 🔥");
+    updatePostsGrid(); // update the post grid to display all posts and the new post
+  }
 }
 
 // Delete an existing post - HTTP Method: PUT
@@ -166,4 +232,12 @@ function prepareData(dataObject) {
     array.push(object); // add the object to array
   }
   return array; // return array back to "the caller"
+}
+
+function compareTitle(post1, post2) {
+  return post1.title.localeCompare(post2.title);
+}
+
+function compareBody(post1, post2) {
+  return post1.body.localeCompare(post2.body);
 }
