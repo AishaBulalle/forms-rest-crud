@@ -5,6 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>forms-rest-crud</title>
+    <link rel="stylesheet" href="app.css" />
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1>Project zoo</h1>
+      <button id="btn-create-post">Create New Animal</button>
+    </header>
+
+    <main>
+      <section>
+        <section id="posts" class="grid-container"></section>
+      </section>
+
+      <section>
+        <h2>Users</h2>
+        <section id="users" class="grid-container"></section>
+      </section>
+    </main>
+
+    <dialog id="dialog-create-post">
+      <h2>Create New Animal</h2>
+      <form id="form-create-post">
+        <label for="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Type a new title"
+        />
+        <label for="body">Body:</label>
+        <input
+          type="text"
+          id="body"
+          name="body"
+          placeholder="Type the content of your new post"
+        />
+        <label for="image">Image:</label>
+        <input
+          type="url"
+          id="image"
+          name="image"
+          placeholder="Paste an image URL"
+        />
+        <button>Create Animal</button>
+      </form>
+    </dialog>
+
+    <!-- dialog - create new post -->
+    <!-- to do  -->
+
+    <!-- dialog - update post -->
+    <!-- to do  -->
+
+    <!-- dialog - delete post -->
+    <!-- to do  -->
+
+    <script src="app.js"></script>
+  </body>
 </html>
