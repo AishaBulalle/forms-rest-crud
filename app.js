@@ -1,7 +1,7 @@
 "use strict";
 
 // ============== global variables ============== //
-const endpoint = "https://projectzoo-b1aef-default-rtdb.firebaseio.com/";
+const endpoint = "https://forms-rest-crud-c1ca6-default-rtdb.firebaseio.com/";
 let posts;
 
 // ============== load and init app ============== //
