@@ -3,7 +3,6 @@
 }
 
 body {
-  background-color: rgb(73, 154, 100);
   margin: 0;
 }
 
@@ -25,6 +24,13 @@ li {
   line-height: 2;
 }
 
+main {
+  grid-area: 1 / 1;
+  background-image: url("blue.jpg");
+  background-size: cover;
+  aspect-ratio: 16 / 9;
+}
+
 h2,
 h3 {
   text-align: center;
@@ -43,13 +49,21 @@ img {
   height: auto;
 }
 
-header,
-footer {
-  background-color: rgb(44, 108, 73);
+header {
+  background-color: rgb(8, 100, 49);
   color: white;
   top: 0;
   padding: 1.5em;
-  text-align: center;
+  background-image: url("headerr.jpg");
+  box-shadow: 1px 1px 8px black;
+}
+
+footer {
+  background-color: rgb(73, 154, 100);
+  color: white;
+  top: 0;
+  padding: 1.5em;
+
   box-shadow: 1px 1px 8px black;
 }
 
@@ -60,9 +74,21 @@ button {
   border: none;
   color: white;
   background-color: rgb(73, 154, 100);
-  text-transform: uppercase;
   padding: 10px;
   width: 100%;
+}
+
+button1 {
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: rgb(73, 154, 100);
+  padding: 10px;
+  width: 10%;
+  position: absolute;
+  bottom: 550px;
+  right: 650px;
 }
 
 .grid-container .btns {
@@ -76,7 +102,7 @@ button {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 2%;
+  border-radius: 70%;
 }
 
 /*----------------dialog----------------------*/
@@ -85,11 +111,11 @@ dialog {
   width: 65vw;
   padding: 2em 1em;
   border-color: rgb(0, 0, 0);
-  background-color: rgb(44, 108, 73);
+  background-color: rgb(73, 154, 100);
 }
 
 dialog::backdrop {
-  background: rgba(130, 185, 151, 0.8);
+  background: rgb(73, 154, 100);
 }
 
 #dialog-grid {
@@ -99,7 +125,7 @@ dialog::backdrop {
 }
 
 dialog {
-  background-color: rgb(68, 139, 68);
+  background-color: rgb(73, 154, 100);
   width: 65vw;
   padding: 2em 1em;
 }
@@ -128,8 +154,9 @@ dialog p {
 .grid-item {
   box-shadow: 1px 1px 8px black;
   padding: 5vh;
-  background-color: rgb(44, 108, 73);
+  background-color: rgb(107, 179, 218);
   cursor: pointer;
+  border-radius: 30%;
 }
 
 .grid-container {
@@ -137,6 +164,7 @@ dialog p {
   grid-template-columns: auto auto auto auto;
   gap: 10px 10px;
   padding: 20px;
+  border-radius: 30%;
 }
 
 /*--------------media--------------------*/
@@ -171,10 +199,10 @@ dialog p {
 
 input {
   margin: 1em auto;
-  width: 100%;
-  max-width: 350px;
+  width: 50%;
+  max-width: 150px;
   padding: 1em;
-  display: block;
+
   text-align: center;
 }
 
