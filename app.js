@@ -193,6 +193,16 @@ async function createPost(title, body, image) {
     console.log("New post succesfully added to Firebase 🔥");
     updatePostsGrid(); // update the post grid to display all posts and the new post
   }
+
+  const url = document.querySelector("#image");
+
+  image.addEventListener("input", (event) => {
+    if (url.validity.typeMismatch) {
+      url.setCustomValidity("Please input url image");
+    } else {
+      url.setCustomValidity("");
+    }
+  });
 }
 
 // Update an existing post - HTTP Method: DELETE

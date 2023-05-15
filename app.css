@@ -182,3 +182,7 @@ form {
   text-align: center;
   color: white;
 }
+
+input:invalid {
+  border: 2px solid red;
+}
