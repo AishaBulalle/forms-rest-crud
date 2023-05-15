@@ -10,39 +10,53 @@
   <body>
     <header>
       <h1>Project zoo</h1>
-      <button id="btn-create-post">Creat New Animal</button>
+      <button1 id="btn-create-post">Tilføj nyt dyr</button1>
+      <div>
+        <label for="input-search">Search:</label>
+        <input type="search" id="input-search" placeholder="Search by title" />
+      </div>
+      <label for="select-sort-by"
+        >Sort by:
+        <select id="select-sort-by">
+          <option value="" selected>Not selected</option>
+          <option value="title">Title</option>
+          <option value="body">Body</option>
+        </select>
+      </label>
     </header>
 
     <main>
-    <main>
-        <section class="tools-grid">
-            <label for="select-sort-by">Sort by:
-                <select id="select-sort-by">
-                    <option value="" selected>Not selected</option>
-                    <option value="title">Title</option>
-                    <option value="body">Body</option>
-                </select>
-            </label>
-            <div>
-                <label for="input-search">Search:</label>
-                <input type="search" id="input-search" placeholder="Search by title">
-            </div>
-        </section>
-        <section id="posts" class="grid-container"></section>
+      <section class="tools-grid"></section>
+      <section id="posts" class="grid-container"></section>
     </main>
 
     <!-- dialog - create new post -->
     <dialog id="dialog-create-post">
-        <h2>Create new post</h2>
-        <form id="form-create-post" method="dialog">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" placeholder="Type a new title">
-            <label for="body">Body:</label>
-            <input type="text" id="body" name="body" placeholder="Type the content of your new post">
-            <label for="image">Image:</label>
-            <input type="url" id="image" name="image" placeholder="Paste an image URL">
-            <button>Create Post</button>
-        </form>
+      <h2>Lav nyt opslag</h2>
+      <form id="form-create-post" method="dialog">
+        <label for="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Type a new title"
+        />
+        <label for="body">Body:</label>
+        <input
+          type="text"
+          id="body"
+          name="body"
+          placeholder="Type the content of your new post"
+        />
+        <label for="image">Image:</label>
+        <input
+          type="url"
+          id="image"
+          name="image"
+          placeholder="Paste an image URL"
+        />
+        <button>Nyt opslag</button>
+      </form>
     </dialog>
 
 
@@ -71,13 +85,13 @@
           name="image"
           placeholder="Paste an image URL"
         />
-        <button>Update Post</button>
+        <button>Updater opslag</button>
       </form>
     </dialog>
 
     <!-- dialog - delete post -->
     <dialog id="dialog-delete-post">
-      <h2>Do you want to delete post?</h2>
+      <h2>vil du slette opslag?</h2>
       <p id="dialog-delete-post-title">Title of post</p>
       <form id="form-delete-post" method="dialog">
         <button type="button" class="btn-cancel">No</button>
