@@ -45,7 +45,7 @@ function showCreatePostDialog() {
   document.querySelector("#dialog-create-post").showModal();
 }
 
-function createPostClicked(event) {
+async function createPostClicked(event) {
   event.preventDefault();
 
   const form = event.target;
@@ -53,9 +53,17 @@ function createPostClicked(event) {
   const title = form.title.value;
   const body = form.body.value;
   const image = form.image.value;
+  const response = await createPost(title, body, image);
 
-  createPost(title, body, image);
-  form.reset(); // reset the form (clears inputs)
+  if (response.ok) {
+    console.log("New post succesfully added to Firebase 🔥");
+    form.reset(); // reset the form (clears inputs)
+    updatePostsGrid();
+    event.target.parentNode.close(); // the dialog
+    hideErrorMessage();
+  } else {
+    showErrorMessage("Something went wrong. Please, try again!");
+  }
 }
 
 function updatePostClicked(event) {
@@ -181,6 +189,7 @@ function searchPosts(searchValue) {
 }
 
 async function createPost(title, body, image) {
+  event.preventDefault();
   const newPost = { title, body, image }; // create new post object
   const json = JSON.stringify(newPost); // convert the JS object to JSON string
   // POST fetch request with JSON in the body
@@ -188,12 +197,11 @@ async function createPost(title, body, image) {
     method: "POST",
     body: json,
   });
-  // check if response is ok - if the response is successful
-  if (response.ok) {
-    console.log("New post succesfully added to Firebase 🔥");
-    updatePostsGrid(); // update the post grid to display all posts and the new post
-  }
+  return response;
 
+  // check if response is ok - if the response is successful
+
+  /*
   const url = document.querySelector("#image");
 
   image.addEventListener("input", (event) => {
@@ -202,7 +210,7 @@ async function createPost(title, body, image) {
     } else {
       url.setCustomValidity("");
     }
-  });
+  });*/
 }
 
 // Update an existing post - HTTP Method: DELETE
@@ -226,7 +234,10 @@ async function updatePost(id, title, body, image) {
     body: json,
   });
 
-  updatePostsGrid();
+  if (response.ok) {
+    console.log("Post succesfully updated in Firebase 🔥");
+    updatePostsGrid(); // update the post grid to display all posts and the new post
+  }
 }
 
 // ============== helper function ============== //
@@ -250,4 +261,14 @@ function compareTitle(post1, post2) {
 
 function compareBody(post1, post2) {
   return post1.body.localeCompare(post2.body);
+}
+
+function showErrorMessage(message) {
+  document.querySelector("#error-message").textContent = message;
+  document.querySelector("#error-message").classList.remove("hide");
+}
+
+function hideErrorMessage() {
+  document.querySelector(".error-message").textContent = "";
+  document.querySelector(".error-message").classList.add("hide");
 }

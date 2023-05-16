@@ -11,22 +11,27 @@
     <header>
       <h1>Project zoo</h1>
       <button1 id="btn-create-post">Tilføj nyt dyr</button1>
-      <div>
-        <label for="input-search">Search:</label>
-        <input type="search" id="input-search" placeholder="Search by title" />
-      </div>
-      <label for="select-sort-by"
-        >Sort by:
-        <select id="select-sort-by">
-          <option value="" selected>Not selected</option>
-          <option value="title">Title</option>
-          <option value="body">Body</option>
-        </select>
-      </label>
     </header>
 
     <main>
-      <section class="tools-grid"></section>
+      <section class="tools-grid">
+        <label for="select-sort-by"
+          >Sort by:
+          <select id="select-sort-by">
+            <option value="" selected>Not selected</option>
+            <option value="title">Title</option>
+            <option value="body">Body</option>
+          </select>
+        </label>
+        <div>
+          <label for="input-search">Search:</label>
+          <input
+            type="search"
+            id="input-search"
+            placeholder="Search by title"
+          />
+        </div>
+      </section>
       <section id="posts" class="grid-container"></section>
     </main>
 
@@ -40,6 +45,9 @@
           id="title"
           name="title"
           placeholder="Type a new title"
+          minlength="3"
+          maxlength="100"
+          required
         />
         <label for="body">Body:</label>
         <input
@@ -47,6 +55,8 @@
           id="body"
           name="body"
           placeholder="Type the content of your new post"
+          minlength="5"
+          required
         />
         <label for="image">Image:</label>
         <input
@@ -54,11 +64,13 @@
           id="image"
           name="image"
           placeholder="Paste an image URL"
+          required
         />
+        <p class="error-message hide">Error Message Placeholder</p>
+
         <button>Nyt opslag</button>
       </form>
     </dialog>
-
 
     <!-- dialog - update post -->
     <dialog id="dialog-update-post">
