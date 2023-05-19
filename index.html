@@ -10,10 +10,28 @@
   <body>
     <header>
       <h1>Project zoo</h1>
-      <button1 id="btn-create-post">Tilføj nyt dyr</button1>
+      <button id="btn-create-post">Tilføj nyt dyr</button>
     </header>
 
     <main>
+      <dialog open id="dialog-posts">
+        <section id="dialog-grid">
+          <figure><img id="detail-image" src="" alt="" /></figure>
+          <article>
+            <h2 id="detail-name"></h2>
+            <p>
+              <span id="detail-description"></span>
+            </p>
+            <section>
+              <h3>Info about <span id="detail-info"> </span></h3>
+            </section>
+          </article>
+        </section>
+        <form method="get">
+          <button id="btn-cancel">Close</button>
+        </form>
+      </dialog>
+
       <section class="tools-grid">
         <label for="select-sort-by"
           >Sort by:
