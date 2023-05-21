@@ -4,7 +4,7 @@
       "title": "Abe",
       "image": "https://media.avisen.dk//image/15711567/57/img.jpg",
       "info": "En abe er i snæver forstand betegnelsen på en primat, der ikke er en halvabe, en spøgelsesabe eller et menneske. Det vil sige alle arter i den zoologiske gruppe Simiiformes med undtagelse af mennesket. I bred forstand kan abe omfatte alle primater, inklusiv mennesket.",
-      "Discription": "",
+      "Discription": {},
       "Height": {},
       "Weight": {},
       "Type": {},
