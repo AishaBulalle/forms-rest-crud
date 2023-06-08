@@ -73,7 +73,7 @@ function updatePostClicked(event) {
   const form = event.target; // or "this"
   // extract the values from inputs in the form
   const title = form.title.value;
-  const body = form.body.value;
+  const body = form.info.value;
   const image = form.image.value;
   // get id of the post to update - saved in data-id
   const id = form.getAttribute("data-id");
@@ -165,7 +165,7 @@ function deleteClicked(post) {
 function updateClicked(post) {
   const updateForm = document.querySelector("#form-update-post"); // reference to update form in dialog
   updateForm.title.value = post.title; // set title input in update form from post title
-  updateForm.body.value = post.info; // set body input in update form post body
+  updateForm.body.value = post.body; // set body input in update form post body
   updateForm.image.value = post.image; // set image input in update form post image
   updateForm.setAttribute("data-id", post.id); // set data-id attribute of post you want to update (... to use when update)
   document.querySelector("#dialog-update-post").showModal(); // show update modal
