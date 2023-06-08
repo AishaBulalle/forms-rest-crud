@@ -148,6 +148,37 @@ async function showPost(postObject) {
   document
     .querySelector("#posts article:last-child .btn-update")
     .addEventListener("click", updateClicked);
+  document
+    .querySelector("#posts article:last-child .btn-update")
+    .addEventListener("click", animalClicked);
+
+  function animalClicked() {
+    console.log("______________________________________");
+
+    document.querySelector("#detail-image").src = postObject.image;
+    document.querySelector("#detail-name").textContent = postObject.name;
+    document.querySelector("#detail-description").textContent =
+      pokemons.description;
+    document.querySelector("#detail-height").textContent = postObject.height;
+    document.querySelector("#detail-weight").textContent = postObject.weight;
+
+    let isAvaliable = isAnimalAvaliable(postObject);
+
+    document.querySelector("#detail-isAnimalAvaliable").textContent =
+      isAvaliable;
+
+    document.querySelector("#dialog-character").showModal();
+  }
+
+  function isAnimalAvaliable(postObject) {
+    let isAvaliable = "";
+    if (postObject.isAvaliable) {
+      isAvaliable = `${postObject.name} is not avaliable at the ZOO today.`;
+    } else {
+      isAvaliable = `${postObject.name} is not avaliable at the ZOO today.`;
+    }
+    return isAvaliable;
+  }
 }
 
 // called when delete button is clicked
@@ -201,3 +232,5 @@ function hideErrorMessage() {
   document.querySelector(".error-message").textContent = "";
   document.querySelector(".error-message").classList.add("hide");
 }
+
+//dialog infor sbout animal
