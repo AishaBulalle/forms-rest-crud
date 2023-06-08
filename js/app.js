@@ -54,7 +54,7 @@ async function createPostClicked(event) {
   const form = event.target;
 
   const title = form.title.value;
-  const body = form.body.value;
+  const info = form.body.value;
   const image = form.image.value;
   const response = await createPost(title, body, image);
 
@@ -132,7 +132,7 @@ async function showPost(postObject) {
         
             <img src="${postObject.image}" />
             <h3>${postObject.title.toUpperCase()}</h3>
-            <p>${postObject.body}</p>
+            <p>${postObject.info}</p>
             <div class="btns">
                 <button class="btn-delete">Delete</button>
                 <button class="btn-update">Update</button>
@@ -148,37 +148,6 @@ async function showPost(postObject) {
   document
     .querySelector("#posts article:last-child .btn-update")
     .addEventListener("click", updateClicked);
-  document
-    .querySelector("#posts article:last-child .btn-update")
-    .addEventListener("click", animalClicked);
-
-  function animalClicked() {
-    console.log("______________________________________");
-
-    document.querySelector("#detail-image").src = postObject.image;
-    document.querySelector("#detail-name").textContent = postObject.name;
-    document.querySelector("#detail-description").textContent =
-      pokemons.description;
-    document.querySelector("#detail-height").textContent = postObject.height;
-    document.querySelector("#detail-weight").textContent = postObject.weight;
-
-    let isAvaliable = isAnimalAvaliable(postObject);
-
-    document.querySelector("#detail-isAnimalAvaliable").textContent =
-      isAvaliable;
-
-    document.querySelector("#dialog-character").showModal();
-  }
-
-  function isAnimalAvaliable(postObject) {
-    let isAvaliable = "";
-    if (postObject.isAvaliable) {
-      isAvaliable = `${postObject.name} is not avaliable at the ZOO today.`;
-    } else {
-      isAvaliable = `${postObject.name} is not avaliable at the ZOO today.`;
-    }
-    return isAvaliable;
-  }
 }
 
 // called when delete button is clicked
@@ -196,7 +165,7 @@ function deleteClicked(post) {
 function updateClicked(post) {
   const updateForm = document.querySelector("#form-update-post"); // reference to update form in dialog
   updateForm.title.value = post.title; // set title input in update form from post title
-  updateForm.body.value = post.body; // set body input in update form post body
+  updateForm.body.value = post.info; // set body input in update form post body
   updateForm.image.value = post.image; // set image input in update form post image
   updateForm.setAttribute("data-id", post.id); // set data-id attribute of post you want to update (... to use when update)
   document.querySelector("#dialog-update-post").showModal(); // show update modal

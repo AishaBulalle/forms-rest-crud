@@ -1,6 +1,6 @@
 import { prepareData } from "./helperss.js";
 
-const endpoint = "https://forms-rest-crud-c1ca6-default-rtdb.firebaseio.com/";
+const endpoint = "https://zoo-projekt-default-rtdb.firebaseio.com/";
 
 async function getPosts() {
   const response = await fetch(`${endpoint}/posts.json`); // fetch request, (GET)
@@ -9,7 +9,7 @@ async function getPosts() {
   return posts; // return posts
 }
 
-async function createPost(title, body, image) {
+async function createPost(title, body, image, event) {
   event.preventDefault();
   const newPost = { title, body, image, uid: "fTs84KRoYw5pRZEWCq2Z" }; // create new post object
   const json = JSON.stringify(newPost); // convert the JS object to JSON string

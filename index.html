@@ -19,8 +19,8 @@
         >Sort by:
         <select id="select-sort-by">
           <option value="" selected>Not selected</option>
-          <option value="title"</title></option>
-          <option value="body">Body</option>
+          <option value="title">Title</option>
+          <option value="Info">Body</option>
         </select>
       </label>
     </header>
@@ -30,11 +30,9 @@
       <section id="posts" class="grid-container"></section>
     </main>
 
-
-
     <!-- dialog info about animal-->
 
-       <dialog id="dialog-animals">
+    <dialog id="dialog-animals">
       <section id="dialog-grid">
         <figure><img id="detail-image" src="" alt="" /></figure>
         <article>
@@ -63,19 +61,6 @@
       </form>
     </dialog>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- dialog - create new post -->
     <dialog id="dialog-create-post">
       <h2>Lav nyt opslag</h2>
@@ -90,7 +75,7 @@
           maxlength="100"
           required
         />
-        <label for="body">Body:</label>
+        <label for="info">Info:</label>
         <input
           type="text"
           id="body"
@@ -124,7 +109,7 @@
           name="title"
           placeholder="Type a new title"
         />
-        <label for="body-update">Body:</label>
+        <label for="body-update">Info:</label>
         <input
           type="text"
           id="body-update"
